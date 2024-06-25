@@ -124,9 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Show score section and hide input fields and button
         document.querySelector('.score').style.display = 'block';
+        document.getElementById('handOptions').style.display = 'block';
         document.getElementById('player1NameInput').style.display = 'none';
         document.getElementById('player2NameInput').style.display = 'none';
         document.getElementById('startGameBtn').style.display = 'none';
+        document.getElementById('player2NameInputA').style.display = `none`;
+        document.getElementById('player2NameInputB').style.display = `none`;
 
         // Hide restart button
         document.getElementById('restartGameBtn').style.display = 'none';
@@ -146,6 +149,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.score').style.display = 'none';
         document.getElementById('gameResults').innerHTML = '';
         document.getElementById('restartGameBtn').style.display = 'none';
+        document.getElementById('handOptions').style.display = 'none'; //Make options vanish on restart
+        document.getElementById('player2NameInputA').style.display = `block`; // Pop name inputs back up
+        document.getElementById('player2NameInputB').style.display = `block`;
 
         // Reset scores
         player1Wins = 0;
@@ -154,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function playGame(player1Name, player2Name, playUntil) {
         const gameResultsDiv = document.getElementById('gameResults');
+        const winnerDiv = document.getElementById('handOptions')
         gameResultsDiv.innerHTML = ''; // Clear previous game results
 
         let roundCount = 1;
@@ -175,10 +182,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Check if game is over (e.g., one player wins a certain number of rounds)
             if (player1Wins >= playUntil || player2Wins >= playUntil) {
                 let gameWinner = player1Wins >= playUntil ? player1Name : player2Name;
-                const finalMessage = document.createElement('p');
+                const finalMessage = document.createElement('h3');
                 finalMessage.textContent = `${gameWinner} wins the game!`;
                 finalMessage.classList.add('font-weight-bold', 'text-success');
-                gameResultsDiv.appendChild(finalMessage);
+                winnerDiv.appendChild(finalMessage);
 
                 // Show restart button
                 document.getElementById('restartGameBtn').style.display = 'block';
@@ -190,37 +197,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Function to play a single round with Player 1 choosing their hand
         function playRound(player1, player2) {
-            let p1Hand = prompt(`${player1}, choose your hand: rock, paper, or scissors`).toLowerCase();
-            
-            // Validate Player 1's input
-            while (!['rock', 'paper', 'scissors'].includes(p1Hand)) {
-                p1Hand = prompt('Invalid input. Please choose rock, paper, or scissors.').toLowerCase();
-            }
-
-            const p2Hand = getHand(); // Player 2's hand is randomly generated
-
-            let winner = null;
-
-            if (p1Hand === p2Hand) {
-                winner = 'tie';
-            } else if (
-                (p1Hand === 'rock' && p2Hand === 'scissors') ||
-                (p1Hand === 'paper' && p2Hand === 'rock') ||
-                (p1Hand === 'scissors' && p2Hand === 'paper')
-            ) {
-                winner = player1;
-            } else {
-                winner = player2;
-            }
-
-            // Display round results
-            const roundResult = document.createElement('p');
-            roundResult.textContent = `Round ${roundCount}: ${player1} (${p1Hand}) vs ${player2} (${p2Hand}) - ${winner === 'tie' ? 'It\'s a tie!' : winner + ' wins!'}`;
-            roundResult.classList.add('round-result');
-            gameResultsDiv.appendChild(roundResult);
-
-            // Update scores and check game end
-            updateScoresAndResults(winner);
+            // Promise to wait for player 1's hand selection
+            const p1HandPromise = new Promise((resolve, reject) => {
+                // Event listeners for each button
+                document.getElementById('rock').addEventListener('click', function() {
+                    resolve('rock');
+                });
+                document.getElementById('paper').addEventListener('click', function() {
+                    resolve('paper');
+                });
+                document.getElementById('scissors').addEventListener('click', function() {
+                    resolve('scissors');
+                });
+            });
+        
+            // Wait for player 1 to select a hand
+            p1HandPromise.then((p1Hand) => {
+                const p2Hand = getHand(); // Player 2's hand is randomly generated
+        
+                let winner = null;
+        
+                if (p1Hand === p2Hand) {
+                    winner = 'tie';
+                } else if (
+                    (p1Hand === 'rock' && p2Hand === 'scissors') ||
+                    (p1Hand === 'paper' && p2Hand === 'rock') ||
+                    (p1Hand === 'scissors' && p2Hand === 'paper')
+                ) {
+                    winner = player1;
+                } else {
+                    winner = player2;
+                }
+        
+                // Display round results
+                const roundResult = document.createElement('p');
+                roundResult.textContent = `Round ${roundCount}: ${player1} (${p1Hand}) vs ${player2} (${p2Hand}) - ${winner === 'tie' ? 'It\'s a tie!' : winner + ' wins!'}`;
+                roundResult.classList.add('round-result');
+                gameResultsDiv.appendChild(roundResult);
+        
+                // Update scores and check game end
+                updateScoresAndResults(winner);
+            });
         }
 
         // Start the first round

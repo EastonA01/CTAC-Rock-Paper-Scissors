@@ -1,3 +1,9 @@
+html{
+    background-color: #313030;
+}
+body{
+    /* padding: 1em; */
+}
 .game-container {
     max-width: 600px;
     margin: 0 auto;
@@ -7,8 +13,20 @@
     margin-top: 20px;
 }
 .game-results {
-    margin-top: 20px;
+    margin-top: 10em;
+    overflow: scroll;
+    margin-bottom: 10em;
+    max-height: 5em;
 }
 .round-result {
     margin-bottom: 10px;
+}
+#rock{
+    font-size: 4em;
+}
+#paper{
+    font-size: 4em;
+}
+#scissors{
+    font-size: 4em;
 }
