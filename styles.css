@@ -1,0 +1,14 @@
+.game-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.score {
+    margin-top: 20px;
+}
+.game-results {
+    margin-top: 20px;
+}
+.round-result {
+    margin-bottom: 10px;
+}

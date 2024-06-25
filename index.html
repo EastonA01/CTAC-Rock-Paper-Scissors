@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/images/favicon.ico">
+</head>
+<body>
+    <body>
+        <div class="container game-container">
+            <h1 class="text-center">Rock-Paper-Scissors Game</h1>
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="player1NameInput">Player 1:</label>
+                        <input type="text" class="form-control" id="player1NameInput" placeholder="Enter Player 1's Name">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="player2NameInput">Player 2:</label>
+                        <input type="text" class="form-control" id="player2NameInput" placeholder="Enter Player 2's Name">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button id="startGameBtn" class="btn btn-primary">Start Game</button>
+                    <button id="restartGameBtn" class="btn btn-secondary ml-2" style="display: none;">Restart Game</button>
+                </div>
+            </div>
+    
+            <div class="score mt-4" style="display: none;">
+                <h2 class="text-center">Score</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="player1Score" class="text-center"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="player2Score" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="gameResults" class="game-results mt-4"></div>
+        </div>
+
+    <!-- JQuery, bootstrap and JS scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    <script src="rockPaperScissors.js"></script>
+</body>
+</html>
