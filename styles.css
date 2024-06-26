@@ -1,8 +1,9 @@
-html{
-    background-color: #313030;
-}
-body{
-    /* padding: 1em; */
+
+.sizeable{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .game-container {
     max-width: 600px;
@@ -16,7 +17,8 @@ body{
     margin-top: 10em;
     overflow: scroll;
     margin-bottom: 10em;
-    max-height: 5em;
+    /* max-height: 5em; */
+    min-height: 5em;
 }
 .round-result {
     margin-bottom: 10px;
@@ -29,4 +31,14 @@ body{
 }
 #scissors{
     font-size: 4em;
+}
+#startGameBtn{
+    margin: 0 auto;
+}
+#restartGameBtn{
+    margin: 0 auto;
+}
+footer{
+    position: sticky;
+    bottom: 0;
 }

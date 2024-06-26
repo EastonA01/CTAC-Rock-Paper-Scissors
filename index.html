@@ -10,53 +10,65 @@
 </head>
 <body>
     <body>
-        <div class="container game-container">
-            <h1 class="text-center">Rock-Paper-Scissors Game</h1>
-    
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="player1NameInput" id="player2NameInputA">Player 1:</label>
-                        <input type="text" class="form-control" id="player1NameInput" placeholder="Enter Player 1's Name">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="player2NameInput" id="player2NameInputB">Player 2:</label>
-                        <input type="text" class="form-control" id="player2NameInput" placeholder="Enter Player 2's Name">
-                    </div>
-                </div>
-            </div>
-    
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <button id="startGameBtn" class="btn btn-primary">Start Game</button>
-                    <button id="restartGameBtn" class="btn btn-secondary ml-2" style="display: none;">Restart Game</button>
-                </div>
-            </div>
-
-            <div class="row" id="handOptions" style="display: none;">
-                <h3 class="col-md-12 text-center">Choose your hand</h3>
-                <div class="col-md-12 text-center">
-                    <button id="rock">✊</button>
-                    <button id="paper">📄</button>
-                    <button id="scissors">✂️</button>
-                </div>
-            </div>
-    
-            <div class="score mt-4" style="display: none;">
-                <h2 class="text-center">Score</h2>
+        <div class="sizeable">
+            <div class="container game-container">
+                <h1 class="text-center">Rock-Paper-Scissors Game</h1>
+        
                 <div class="row">
                     <div class="col-md-6">
-                        <div id="player1Score" class="text-center"></div>
+                        <div class="form-group">
+                            <label for="player1NameInput" id="player2NameInputA">Player 1:</label>
+                            <input type="text" class="form-control" id="player1NameInput" placeholder="Enter Player 1's Name">
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="player2Score" class="text-center"></div>
+                        <div class="form-group">
+                            <label for="player2NameInput" id="player2NameInputB">Player 2:</label>
+                            <input type="text" class="form-control" id="player2NameInput" placeholder="Enter Player 2's Name">
+                        </div>
                     </div>
                 </div>
-            </div>
+        
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button id="startGameBtn" class="btn btn-primary text-center">Start Game</button>
+                        <button id="restartGameBtn" class="btn btn-secondary ml-2" style="display: none;">Restart Game</button>
+                    </div>
+                </div>
     
-            <div id="gameResults" class="game-results mt-4 text-center"></div>
+                <div class="row" id="handOptions" style="display: none;">
+                    <h3 class="col-md-12 text-center">Choose your hand</h3>
+                    <div class="col-md-12 text-center">
+                        <button id="rock">✊</button>
+                        <button id="paper">📄</button>
+                        <button id="scissors">✂️</button>
+                    </div>
+                    <div id="winnerPopup" class="text-center">
+    
+                    </div>
+                </div>
+        
+                <div class="score mt-4" style="display: none;">
+                    <h2 class="text-center">Score</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="player1Score" class="text-center"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="player2Score" class="text-center"></div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div id="gameResults" class="game-results mt-4 text-center"></div>
+            </div>
+            <div id="footerDIV">
+                <footer class="bg-body-tertiary text-center text-lg-start">
+                    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+                      2024 Easton Anderson | Stiegler EdTech
+                    </div>
+                  </footer>
+            </div>
         </div>
 
     <!-- JQuery, bootstrap and JS scripts -->

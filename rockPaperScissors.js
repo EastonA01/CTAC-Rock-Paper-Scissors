@@ -160,8 +160,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function playGame(player1Name, player2Name, playUntil) {
         const gameResultsDiv = document.getElementById('gameResults');
-        const winnerDiv = document.getElementById('handOptions')
+        const winnerDiv = document.getElementById('winnerPopup')
         gameResultsDiv.innerHTML = ''; // Clear previous game results
+        winnerDiv.innerHTML = ''; // ^^^
 
         let roundCount = 1;
 
@@ -188,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 winnerDiv.appendChild(finalMessage);
 
                 // Show restart button
-                document.getElementById('restartGameBtn').style.display = 'block';
+                document.getElementById('restartGameBtn').style.display = 'initial';
             } else {
                 // Continue playing rounds
                 playRound(player1Name, player2Name);
